@@ -1,0 +1,19 @@
+[extend]
+# Extend the default gitleaks ruleset
+useDefault = true
+
+[allowlist]
+description = "Global allowlist"
+paths = [
+  ".secrets.baseline",
+  "package-lock.json",
+  "yarn.lock",
+  ".pre-commit-config.yaml",
+]
+
+# Add project-specific rules below as needed
+# [[rules]]
+# id = "custom-api-key"
+# description = "Detects custom API key pattern"
+# regex = '''MY_APP_KEY_[A-Z0-9]{32}'''
+# tags = ["key", "api"]

@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "Observability Check",
+  "description": "After editing a C# file, check that new service classes have ILogger injected, no Console.WriteLine is used, and any new ActivitySource or Meter is registered with the OTel provider.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/Services/**/*.cs",
+      "**/Controllers/**/*.cs",
+      "**/Repositories/**/*.cs"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A C# service, controller, or repository file was just edited. Check observability compliance:\n- Every new service/controller/repository class MUST accept ILogger<T> via constructor injection\n- No Console.WriteLine or Debug.WriteLine — use ILogger<T> only\n- No silent exception swallowing — always log at Error level or rethrow\n- Any new ActivitySource must be registered with the OTel tracer provider\n- Any new Meter must be registered with the OTel meter provider\n- Log messages must be structured (use message templates, not string interpolation)\n- Never log sensitive data: passwords, tokens, PII, or raw spatial coordinates\n\nIf any violations are found, fix them now."
+  }
+}

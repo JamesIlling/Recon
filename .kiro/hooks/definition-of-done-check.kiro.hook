@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Definition of Done Check",
+  "description": "After a spec task completes, remind the agent to verify the full Definition of Done: unit tests, mutation tests, Playwright E2E, SAST scan, SCA scan, and secrets scan all pass.",
+  "version": "1",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A spec task just completed. Before marking it done, verify the full Definition of Done:\n1. Unit tests pass — dotnet test (backend) and npm run test -- --run (frontend)\n2. Mutation tests pass at ≥ 80% score — dotnet stryker (run on demand, flag if not run)\n3. Playwright E2E tests pass for any user-facing changes\n4. SAST scan passes — semgrep --config=p/owasp-top-ten (zero findings)\n5. SCA scan passes — dotnet list package --vulnerable --include-transitive and npm audit (no high/critical)\n6. Secrets scan passes — pre-commit run --all-files (zero detected secrets)\n7. No regressions in existing test suites\n\nReport which checks passed, which were skipped (with reason), and whether the task is truly complete."
+  }
+}

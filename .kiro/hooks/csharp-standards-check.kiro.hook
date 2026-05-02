@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "C# Standards Check",
+  "description": "After editing a C# file, verify it follows project coding standards: naming conventions, no union types, no top-level statements, no Console.WriteLine, ILogger injection, Allman braces, XML doc comments on public members, and no unsafe code.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.cs"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A C# file was just edited. Review it against the project's C# standards:\n- No union types (avoid discriminated union patterns)\n- No top-level statements\n- No Console.WriteLine or Debug.WriteLine — use ILogger<T> instead\n- No unsafe or native code — prefer managed C#\n- Allman brace style (opening brace on its own line)\n- XML doc comments (///) on all public types and members\n- Private fields prefixed with _ (camelCase), static fields with s_\n- No magic numbers or strings — use named constants\n- Functions ≤ 25 lines; if longer, flag it\n- No any/Any types — all types must be explicit\n- Every new service class must accept ILogger<T> via constructor injection\nIf any violations are found, fix them now."
+  }
+}

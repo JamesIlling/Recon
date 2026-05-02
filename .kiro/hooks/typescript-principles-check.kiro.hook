@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "TypeScript Principles Check",
+  "description": "After editing TypeScript or TSX files, verify no 'any' types are used, functions are ≤ 25 lines, max 3 parameters, no magic numbers/strings, and existing style is matched.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/*.ts",
+      "**/*.tsx"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A TypeScript/TSX file was just edited. Review it against the project's engineering principles:\n- No 'any' types — all types must be defined explicitly\n- Functions must be ≤ 25 lines; if longer, decompose them\n- Maximum 3 parameters per function — use objects for more\n- No magic numbers or strings — use named constants\n- Match the existing code style when modifying existing files\n- Do not add error handling or validation that wasn't asked for\nIf any violations are found, fix them now."
+  }
+}
