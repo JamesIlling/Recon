@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Package Registry Validation",
+  "description": "Before writing any package reference to a config file, verify the package and version exist in the appropriate registry (NuGet, npm, Docker Hub).",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A file write operation is about to occur. Before proceeding, check whether the content being written contains any package, library, or tool references — such as NuGet package IDs and versions, npm package names and versions, dotnet tool names, or Docker image tags.\n\nFor EACH package or tool reference found:\n1. Verify the package exists in its registry:\n   - NuGet/.NET tools: https://www.nuget.org/packages/{id}\n   - npm: https://www.npmjs.com/package/{id}\n   - Docker images: check Docker Hub or ghcr.io\n2. Verify the exact version specified exists (not just the package name).\n3. Confirm it is the latest stable version, or note if a newer stable version is available.\n\nIf any package does NOT exist, or the version does NOT exist in the registry:\n- STOP and do not write the file.\n- Report which package/version could not be verified.\n- Ask the user how to proceed.\n\nIf all packages are verified, proceed with the write operation."
+  }
+}

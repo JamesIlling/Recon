@@ -1,0 +1,33 @@
+﻿# OWASP ZAP MCP Server - docker compose for local security testing
+# 1. Copy .env.example to .env and fill in your API keys
+# 2. Run: docker compose up -d
+# 3. Enable the owasp-zap MCP server in ~/.kiro/settings/mcp.json (set disabled: false)
+# 4. Set MCP_ZAP_API_KEY environment variable to match MCP_API_KEY in .env
+
+services:
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    command: zap.sh -daemon -host 0.0.0.0 -port 8080 -config api.key=${ZAP_API_KEY} -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true
+    networks:
+      - zap-net
+
+  mcp-server:
+    image: ghcr.io/dtkmn/mcp-zap-server:latest
+    ports:
+      - "7456:7456"
+    environment:
+      ZAP_BASE_URL: http://zap:8080
+      ZAP_API_KEY: ${ZAP_API_KEY}
+      MCP_SECURITY_MODE: ${MCP_SECURITY_MODE:-api-key}
+      MCP_API_KEY: ${MCP_API_KEY}
+      LOCAL_ZAP_WORKPLACE_FOLDER: /zap-workplace
+    volumes:
+      - ${LOCAL_ZAP_WORKPLACE_FOLDER:-./zap-workplace}:/zap-workplace
+    depends_on:
+      - zap
+    networks:
+      - zap-net
+
+networks:
+  zap-net:
+    driver: bridge
