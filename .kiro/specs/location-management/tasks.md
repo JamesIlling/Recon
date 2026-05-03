@@ -129,178 +129,178 @@ Tasks are ordered by dependency. Complete infrastructure and foundation tasks fi
 
 ## 8. Locations — Frontend
 
-- [ ] 8.1 Implement `AuthContext` — JWT storage in localStorage, user profile state, login/logout
-- [ ] 8.2 Implement `ProtectedRoute` and `AdminRoute` components
-- [ ] 8.3 Implement `LoginPage` with `LoginForm` and `RegisterForm` (tabs or toggle)
-  - [ ] 8.3.1 Inline password complexity validation before submit
-  - [ ] 8.3.2 Duplicate username/displayName/email error display
-  - [ ] 8.3.3 "Forgot password?" link
-  - [ ] 8.3.4 Redirect authenticated users to homepage
-- [ ] 8.4 Implement `ForgotPasswordPage` and `ResetPasswordPage`
-- [ ] 8.5 Implement `LeafletMap` component
-  - [ ] 8.5.1 Render Location pins at WGS84 coordinates
-  - [ ] 8.5.2 Display Location name in pin tooltip
-  - [ ] 8.5.3 Render BoundingShape overlay when present
-  - [ ] 8.5.4 Auto-fit viewport to all pins + shape
-  - [ ] 8.5.5 Keyboard-accessible text alternative (table/list of Locations with names and coordinates)
-- [ ] 8.6 Implement `ContentSequenceViewer` — render Heading (h1/h2/h3), Paragraph, Image blocks in order
-- [ ] 8.7 Implement `ContentSequenceEditor` — add/remove/reorder blocks, heading level selector, inline image upload
-- [ ] 8.8 Implement `LocationListPage` with pagination and navigation links
-- [ ] 8.9 Implement `LocationDetailPage`
-  - [ ] 8.9.1 Display name, coordinates, SRID metadata, creator, timestamp
-  - [ ] 8.9.2 Render ContentSequence via `ContentSequenceViewer`
-  - [ ] 8.9.3 Render Leaflet map with single pin
-  - [ ] 8.9.4 Show `PendingEditPanel` for creator (side-by-side comparison, Approve/Reject actions)
-  - [ ] 8.9.5 Show loading skeleton while data is in flight
-- [ ] 8.10 Unit tests for all components; Playwright E2E for create/view/edit happy paths
-- [ ] 8.11 Axe-core accessibility assertions on all Location pages
+- [x] 8.1 Implement `AuthContext` — JWT storage in localStorage, user profile state, login/logout
+- [x] 8.2 Implement `ProtectedRoute` and `AdminRoute` components
+- [x] 8.3 Implement `LoginPage` with `LoginForm` and `RegisterForm` (tabs or toggle)
+  - [x] 8.3.1 Inline password complexity validation before submit
+  - [x] 8.3.2 Duplicate username/displayName/email error display
+  - [x] 8.3.3 "Forgot password?" link
+  - [x] 8.3.4 Redirect authenticated users to homepage
+- [x] 8.4 Implement `ForgotPasswordPage` and `ResetPasswordPage`
+- [x] 8.5 Implement `LeafletMap` component
+  - [x] 8.5.1 Render Location pins at WGS84 coordinates
+  - [x] 8.5.2 Display Location name in pin tooltip
+  - [x] 8.5.3 Render BoundingShape overlay when present
+  - [x] 8.5.4 Auto-fit viewport to all pins + shape
+  - [x] 8.5.5 Keyboard-accessible text alternative (table/list of Locations with names and coordinates)
+- [x] 8.6 Implement `ContentSequenceViewer` — render Heading (h1/h2/h3), Paragraph, Image blocks in order
+- [x] 8.7 Implement `ContentSequenceEditor` — add/remove/reorder blocks, heading level selector, inline image upload
+- [x] 8.8 Implement `LocationListPage` with pagination and navigation links
+- [x] 8.9 Implement `LocationDetailPage`
+  - [x] 8.9.1 Display name, coordinates, SRID metadata, creator, timestamp
+  - [x] 8.9.2 Render ContentSequence via `ContentSequenceViewer`
+  - [x] 8.9.3 Render Leaflet map with single pin
+  - [x] 8.9.4 Show `PendingEditPanel` for creator (side-by-side comparison, Approve/Reject actions)
+  - [x] 8.9.5 Show loading skeleton while data is in flight
+- [x] 8.10 Unit tests for all components; Playwright E2E for create/view/edit happy paths
+- [x] 8.11 Axe-core accessibility assertions on all Location pages
 
 ---
 
 ## 9. LocationCollections — Backend
 
-- [ ] 9.1 Implement `ICollectionRepository` / `CollectionRepository`
-- [ ] 9.2 Implement `ICollectionService` / `CollectionService`
-  - [ ] 9.2.1 `CreateAsync` — validate, persist, record AuditEvent
-  - [ ] 9.2.2 `GetByIdAsync` — enforce private visibility at service layer (not only controller)
-  - [ ] 9.2.3 `ListPublicAsync` — paginated public collections with thumbnail URL
-  - [ ] 9.2.4 `ListCombinedAsync` — public + owned with `isOwner` flag (never cached)
-  - [ ] 9.2.5 `UpdateAsync` — owner only, validate NamedShape reference, record AuditEvent
-  - [ ] 9.2.6 `DeleteAsync` — owner or admin, cascade CollectionMembers + orphaned image, record AuditEvent
-  - [ ] 9.2.7 `AddMemberAsync` — owner: direct; non-owner: pending request; create notification on approval/rejection
-  - [ ] 9.2.8 `RemoveMemberAsync` — owner only
-  - [ ] 9.2.9 `ApproveMembershipAsync` / `RejectMembershipAsync` — owner only, create notifications, record AuditEvents
-  - [ ] 9.2.10 Unit tests for all paths; service-layer private visibility enforcement test
-- [ ] 9.3 Implement `CollectionsController` with all routes
-- [ ] 9.4 Configure response caching: public list (60s), public detail (60s), invalidate on mutation; never cache combined list
-- [ ] 9.5 Write security tests: 403 non-owner mutations, 403 private collection access
+- [x] 9.1 Implement `ICollectionRepository` / `CollectionRepository`
+- [x] 9.2 Implement `ICollectionService` / `CollectionService`
+  - [x] 9.2.1 `CreateAsync` — validate, persist, record AuditEvent
+  - [x] 9.2.2 `GetByIdAsync` — enforce private visibility at service layer (not only controller)
+  - [x] 9.2.3 `ListPublicAsync` — paginated public collections with thumbnail URL
+  - [x] 9.2.4 `ListCombinedAsync` — public + owned with `isOwner` flag (never cached)
+  - [x] 9.2.5 `UpdateAsync` — owner only, validate NamedShape reference, record AuditEvent
+  - [x] 9.2.6 `DeleteAsync` — owner or admin, cascade CollectionMembers + orphaned image, record AuditEvent
+  - [x] 9.2.7 `AddMemberAsync` — owner: direct; non-owner: pending request; create notification on approval/rejection
+  - [x] 9.2.8 `RemoveMemberAsync` — owner only
+  - [x] 9.2.9 `ApproveMembershipAsync` / `RejectMembershipAsync` — owner only, create notifications, record AuditEvents
+  - [x] 9.2.10 Unit tests for all paths; service-layer private visibility enforcement test
+- [x] 9.3 Implement `CollectionsController` with all routes
+- [x] 9.4 Configure response caching: public list (60s), public detail (60s), invalidate on mutation; never cache combined list
+- [x] 9.5 Write security tests: 403 non-owner mutations, 403 private collection access
 
 ---
 
 ## 10. NamedShapes — Backend
 
-- [ ] 10.1 Implement `INamedShapeRepository` / `NamedShapeRepository`
-- [ ] 10.2 Implement `INamedShapeService` / `NamedShapeService`
-  - [ ] 10.2.1 `UploadAsync` — admin only, validate GeoJSON (type, vertex count max 1000), store as GEOGRAPHY, record AuditEvent
-  - [ ] 10.2.2 `RenameAsync` — admin only, unique name check, record AuditEvent
-  - [ ] 10.2.3 `DeleteAsync` — admin only, reject if referenced by any collection, record AuditEvent
-  - [ ] 10.2.4 `ListAsync` — any authenticated user, paginated (id + name only)
-  - [ ] 10.2.5 Unit tests including geometry bomb protection (more than 1000 vertices returns 400)
-- [ ] 10.3 Implement `NamedShapesController` with all routes
-- [ ] 10.4 Write security tests: 403 Standard user mutations, 401 unauthenticated
+- [x] 10.1 Implement `INamedShapeRepository` / `NamedShapeRepository`
+- [x] 10.2 Implement `INamedShapeService` / `NamedShapeService`
+  - [x] 10.2.1 `UploadAsync` — admin only, validate GeoJSON (type, vertex count max 1000), store as GEOGRAPHY, record AuditEvent
+  - [x] 10.2.2 `RenameAsync` — admin only, unique name check, record AuditEvent
+  - [x] 10.2.3 `DeleteAsync` — admin only, reject if referenced by any collection, record AuditEvent
+  - [x] 10.2.4 `ListAsync` — any authenticated user, paginated (id + name only)
+  - [x] 10.2.5 Unit tests including geometry bomb protection (more than 1000 vertices returns 400)
+- [x] 10.3 Implement `NamedShapesController` with all routes
+- [x] 10.4 Write security tests: 403 Standard user mutations, 401 unauthenticated
 
 ---
 
 ## 11. LocationCollections — Frontend
 
-- [ ] 11.1 Implement `CollectionCard` component — thumbnail, name, description (truncated), owner badge vs public badge
-- [ ] 11.2 Implement `HomePage`
-  - [ ] 11.2.1 Paginated card list using `GET /api/collections/combined`
-  - [ ] 11.2.2 Filter by `ShowPublicCollections` preference (read from API, not client state)
-  - [ ] 11.2.3 Empty-state with "Create collection" prompt
-  - [ ] 11.2.4 Loading skeleton while data is in flight
-  - [ ] 11.2.5 Redirect unauthenticated users to `/login`
-- [ ] 11.3 Implement `CollectionDetailPage`
-  - [ ] 11.3.1 Leaflet map with all member Location pins and optional BoundingShape overlay
-  - [ ] 11.3.2 Auto-fit viewport to all pins + shape
-  - [ ] 11.3.3 Linked list of member Locations below map
-  - [ ] 11.3.4 Empty-state when no members
-  - [ ] 11.3.5 Ownership reassignment UI (admin only, accessible from detail page)
-- [ ] 11.4 Unit tests for all components; Playwright E2E for collection create/view/map happy paths
-- [ ] 11.5 Axe-core accessibility assertions on all Collection pages
+- [x] 11.1 Implement `CollectionCard` component — thumbnail, name, description (truncated), owner badge vs public badge
+- [x] 11.2 Implement `HomePage`
+  - [x] 11.2.1 Paginated card list using `GET /api/collections/combined`
+  - [x] 11.2.2 Filter by `ShowPublicCollections` preference (read from API, not client state)
+  - [x] 11.2.3 Empty-state with "Create collection" prompt
+  - [x] 11.2.4 Loading skeleton while data is in flight
+  - [x] 11.2.5 Redirect unauthenticated users to `/login`
+- [x] 11.3 Implement `CollectionDetailPage`
+  - [x] 11.3.1 Leaflet map with all member Location pins and optional BoundingShape overlay
+  - [x] 11.3.2 Auto-fit viewport to all pins + shape
+  - [x] 11.3.3 Linked list of member Locations below map
+  - [x] 11.3.4 Empty-state when no members
+  - [x] 11.3.5 Ownership reassignment UI (admin only, accessible from detail page)
+- [x] 11.4 Unit tests for all components; Playwright E2E for collection create/view/map happy paths
+- [x] 11.5 Axe-core accessibility assertions on all Collection pages
 
 ---
 
 ## 12. User Profile and Configuration
 
-- [ ] 12.1 Implement `IUserService` / `UserService`
-  - [ ] 12.1.1 `GetProfileAsync` — return own profile (never expose email publicly)
-  - [ ] 12.1.2 `ChangeDisplayNameAsync` — unique check (case-insensitive), record AuditEvent
-  - [ ] 12.1.3 `ChangePasswordAsync` — verify current password, update hash, record AuditEvent
-  - [ ] 12.1.4 `UploadAvatarAsync` — 1 MB limit, 1:1 crop, generate ThumbnailVariant only, replace previous avatar, record AuditEvent
-  - [ ] 12.1.5 `UpdatePreferencesAsync` — persist `ShowPublicCollections`, record AuditEvent
-  - [ ] 12.1.6 Unit tests for all paths
-- [ ] 12.2 Implement `UsersController` with routes: `GET /api/users/me`, `PUT /api/users/me/display-name`, `PUT /api/users/me/password`, `PUT /api/users/me/avatar`, `PUT /api/users/me/preferences`
-- [ ] 12.3 Implement `UserMenu` React component — avatar (ThumbnailVariant), display name, links to settings and sign-out
-- [ ] 12.4 Implement `UserConfigurationPage`
-  - [ ] 12.4.1 Display name inline editor with uniqueness error
-  - [ ] 12.4.2 Avatar uploader with 1:1 crop tool and optional altText input
-  - [ ] 12.4.3 Change password form (current + new + confirm)
-  - [ ] 12.4.4 `ShowPublicCollections` toggle (persisted immediately to API)
-  - [ ] 12.4.5 Redirect unauthenticated users to `/login`
-- [ ] 12.5 Unit tests for all components; Playwright E2E for settings happy path
-- [ ] 12.6 Axe-core accessibility assertions on settings page
+- [x] 12.1 Implement `IUserService` / `UserService`
+  - [x] 12.1.1 `GetProfileAsync` — return own profile (never expose email publicly)
+  - [x] 12.1.2 `ChangeDisplayNameAsync` — unique check (case-insensitive), record AuditEvent
+  - [x] 12.1.3 `ChangePasswordAsync` — verify current password, update hash, record AuditEvent
+  - [x] 12.1.4 `UploadAvatarAsync` — 1 MB limit, 1:1 crop, generate ThumbnailVariant only, replace previous avatar, record AuditEvent
+  - [x] 12.1.5 `UpdatePreferencesAsync` — persist `ShowPublicCollections`, record AuditEvent
+  - [x] 12.1.6 Unit tests for all paths
+- [x] 12.2 Implement `UsersController` with routes: `GET /api/users/me`, `PUT /api/users/me/display-name`, `PUT /api/users/me/password`, `PUT /api/users/me/avatar`, `PUT /api/users/me/preferences`
+- [x] 12.3 Implement `UserMenu` React component — avatar (ThumbnailVariant), display name, links to settings and sign-out
+- [-] 12.4 Implement `UserConfigurationPage`
+  - [x] 12.4.1 Display name inline editor with uniqueness error
+  - [x] 12.4.2 Avatar uploader with 1:1 crop tool and optional altText input
+  - [x] 12.4.3 Change password form (current + new + confirm)
+  - [x] 12.4.4 `ShowPublicCollections` toggle (persisted immediately to API)
+  - [x] 12.4.5 Redirect unauthenticated users to `/login`
+- [x] 12.5 Unit tests for all components; Playwright E2E for settings happy path
+- [x] 12.6 Axe-core accessibility assertions on settings page
 
 ---
 
 ## 13. In-App Notifications
 
-- [ ] 13.1 Implement `INotificationService` / `NotificationService` — create notifications for all workflow events (PendingEdit submitted/approved/rejected, membership approved/rejected)
-- [ ] 13.2 Implement `INotificationRepository` / `NotificationRepository`
-- [ ] 13.3 Implement `NotificationsController` with routes: `GET /api/notifications`, `PUT /api/notifications/{id}/read`, `PUT /api/notifications/read-all`, `DELETE /api/notifications/{id}`
-- [ ] 13.4 Implement `NotificationPanel` React component
-  - [ ] 13.4.1 Unread count badge in `UserMenu` with `aria-live="polite"`
-  - [ ] 13.4.2 Panel listing unread notifications with description and navigation link
-  - [ ] 13.4.3 Mark as read / delete actions
-  - [ ] 13.4.4 Poll `GET /api/notifications` every 30 seconds when panel is open
-- [ ] 13.5 Unit tests for notification creation on each workflow event
-- [ ] 13.6 Axe-core accessibility assertions on notification panel
+- [x] 13.1 Implement `INotificationService` / `NotificationService` — create notifications for all workflow events (PendingEdit submitted/approved/rejected, membership approved/rejected)
+- [x] 13.2 Implement `INotificationRepository` / `NotificationRepository`
+- [x] 13.3 Implement `NotificationsController` with routes: `GET /api/notifications`, `PUT /api/notifications/{id}/read`, `PUT /api/notifications/read-all`, `DELETE /api/notifications/{id}`
+- [x] 13.4 Implement `NotificationPanel` React component
+  - [x] 13.4.1 Unread count badge in `UserMenu` with `aria-live="polite"`
+  - [x] 13.4.2 Panel listing unread notifications with description and navigation link
+  - [x] 13.4.3 Mark as read / delete actions
+  - [x] 13.4.4 Poll `GET /api/notifications` every 30 seconds when panel is open
+- [x] 13.5 Unit tests for notification creation on each workflow event
+- [x] 13.6 Axe-core accessibility assertions on notification panel
 
 ---
 
 ## 14. Admin Features
 
-- [ ] 14.1 Implement `IUserAdminService` — `ListUsersAsync`, `PromoteAsync`, `DemoteAsync` (last-admin guard), record AuditEvents
-- [ ] 14.2 Implement `AdminController` — `GET /api/admin/users`, `PUT /api/admin/users/{id}/role`
-- [ ] 14.3 Implement `AdminUsersPage` React component — user list with role display, Promote/Demote actions (admin only)
-- [ ] 14.4 Implement audit log API: `GET /api/admin/audit-log` with filter parameters (eventType, actingUserId, resourceType, resourceId, outcome, date range), paginated (default 50, max 200)
-- [ ] 14.5 Implement `AuditLogPage` React component — paginated table with filter controls (dropdowns, text search, date pickers)
-- [ ] 14.6 Implement ownership reassignment: `POST /api/admin/resources/{type}/{id}/reassign`, record AuditEvent
-- [ ] 14.7 Unit tests: last-admin guard, 403 non-admin access, audit log filter combinations
-- [ ] 14.8 Axe-core accessibility assertions on all admin pages
+- [x] 14.1 Implement `IUserAdminService` — `ListUsersAsync`, `PromoteAsync`, `DemoteAsync` (last-admin guard), record AuditEvents
+- [x] 14.2 Implement `AdminController` — `GET /api/admin/users`, `PUT /api/admin/users/{id}/role`
+- [x] 14.3 Implement `AdminUsersPage` React component — user list with role display, Promote/Demote actions (admin only)
+- [x] 14.4 Implement audit log API: `GET /api/admin/audit-log` with filter parameters (eventType, actingUserId, resourceType, resourceId, outcome, date range), paginated (default 50, max 200)
+- [x] 14.5 Implement `AuditLogPage` React component — paginated table with filter controls (dropdowns, text search, date pickers)
+- [x] 14.6 Implement ownership reassignment: `POST /api/admin/resources/{type}/{id}/reassign`, record AuditEvent
+- [x] 14.7 Unit tests: last-admin guard, 403 non-admin access, audit log filter combinations
+- [x] 14.8 Axe-core accessibility assertions on all admin pages
 
 ---
 
 ## 15. Data Export and Import
 
-- [ ] 15.1 Implement `IBackupService` / `BackupService`
-  - [ ] 15.1.1 `ExportAsync` — query all exportable data, serialise to JSON manifest, package with image files into ZIP, encrypt with AES-256 (caller-supplied key, min 32 chars), never log key
-  - [ ] 15.1.2 `ImportAsync` — decrypt, validate schema (HTTP 422 on failure), create ImportUser, import additively with new IDs on conflict, validate coordinates and images (skip invalid with warning), return ImportResult summary
-  - [ ] 15.1.3 Unit tests: export structure, import additive behaviour, ImportUser creation, invalid record skipping
-- [ ] 15.2 Implement export/import endpoints in `AdminController`: `POST /api/admin/export`, `POST /api/admin/import`
-- [ ] 15.3 Implement `ImportExportPage` React component — export form (encryption key input, download button), import form (file picker, decryption key input, result summary)
-- [ ] 15.4 Write security tests: 403 non-admin, 400 missing/short key, 422 invalid archive schema
+- [x] 15.1 Implement `IBackupService` / `BackupService`
+  - [x] 15.1.1 `ExportAsync` — query all exportable data, serialise to JSON manifest, package with image files into ZIP, encrypt with AES-256 (caller-supplied key, min 32 chars), never log key
+  - [x] 15.1.2 `ImportAsync` — decrypt, validate schema (HTTP 422 on failure), create ImportUser, import additively with new IDs on conflict, validate coordinates and images (skip invalid with warning), return ImportResult summary
+  - [x] 15.1.3 Unit tests: export structure, import additive behaviour, ImportUser creation, invalid record skipping
+- [x] 15.2 Implement export/import endpoints in `AdminController`: `POST /api/admin/export`, `POST /api/admin/import`
+- [x] 15.3 Implement `ImportExportPage` React component — export form (encryption key input, download button), import form (file picker, decryption key input, result summary)
+- [x] 15.4 Write security tests: 403 non-admin, 400 missing/short key, 422 invalid archive schema
 
 ---
 
 ## 16. Observability and Telemetry
 
-- [ ] 16.1 Register `LocationManagementTelemetry` `ActivitySource` and `Meter` in `Program.cs`
-- [ ] 16.2 Add custom spans for business operations (create/edit/delete Location, approve/reject PendingEdit)
-- [ ] 16.3 Add histograms for Location create/edit durations and image upload count
-- [ ] 16.4 Implement source-generated logging (`LoggerMessage.Define`) for all key log events
-- [ ] 16.5 Verify all log events never include passwords, JWT secrets, image binary data, or coordinate values
-- [ ] 16.6 Integration test: verify AuditEvents are recorded for all mutating operations
+- [~] 16.1 Register `LocationManagementTelemetry` `ActivitySource` and `Meter` in `Program.cs`
+- [~] 16.2 Add custom spans for business operations (create/edit/delete Location, approve/reject PendingEdit)
+- [~] 16.3 Add histograms for Location create/edit durations and image upload count
+- [~] 16.4 Implement source-generated logging (`LoggerMessage.Define`) for all key log events
+- [~] 16.5 Verify all log events never include passwords, JWT secrets, image binary data, or coordinate values
+- [~] 16.6 Integration test: verify AuditEvents are recorded for all mutating operations
 
 ---
 
 ## 17. End-to-End Tests and Accessibility
 
-- [ ] 17.1 Playwright E2E: Register then Login then Create Location then View Location
-- [ ] 17.2 Playwright E2E: Non-creator submits edit then Creator approves then Canonical version updated
-- [ ] 17.3 Playwright E2E: Create Collection then Add Location then View Collection map
-- [ ] 17.4 Playwright E2E: Admin promotes user then Promoted user accesses admin features
-- [ ] 17.5 Playwright E2E: Admin exports backup then Admin imports backup then Data present
-- [ ] 17.6 Axe-core accessibility assertions on every page (zero critical/serious violations)
-- [ ] 17.7 Manual accessibility checklist: keyboard-only navigation, screen reader smoke test, 200% zoom, high-contrast mode
+- [~] 17.1 Playwright E2E: Register then Login then Create Location then View Location
+- [~] 17.2 Playwright E2E: Non-creator submits edit then Creator approves then Canonical version updated
+- [~] 17.3 Playwright E2E: Create Collection then Add Location then View Collection map
+- [~] 17.4 Playwright E2E: Admin promotes user then Promoted user accesses admin features
+- [~] 17.5 Playwright E2E: Admin exports backup then Admin imports backup then Data present
+- [~] 17.6 Axe-core accessibility assertions on every page (zero critical/serious violations)
+- [~] 17.7 Manual accessibility checklist: keyboard-only navigation, screen reader smoke test, 200% zoom, high-contrast mode
 
 ---
 
 ## 18. Security Scanning and Quality Gates
 
-- [ ] 18.1 Run `semgrep --config=p/owasp-top-ten src/` — zero findings required
-- [ ] 18.2 Run `dotnet list package --vulnerable --include-transitive` — no high/critical vulnerabilities
-- [ ] 18.3 Run `npm audit` in `src/client` — no high/critical vulnerabilities
-- [ ] 18.4 Run `dotnet stryker` — mutation score 80% or above
-- [ ] 18.5 Run `pre-commit run --all-files` — zero detected secrets
-- [ ] 18.6 Verify all Husky pre-commit hooks pass: `dotnet husky run --group pre-commit`
+- [~] 18.1 Run `semgrep --config=p/owasp-top-ten src/` — zero findings required
+- [~] 18.2 Run `dotnet list package --vulnerable --include-transitive` — no high/critical vulnerabilities
+- [~] 18.3 Run `npm audit` in `src/client` — no high/critical vulnerabilities
+- [~] 18.4 Run `dotnet stryker` — mutation score 80% or above
+- [~] 18.5 Run `pre-commit run --all-files` — zero detected secrets
+- [~] 18.6 Verify all Husky pre-commit hooks pass: `dotnet husky run --group pre-commit`

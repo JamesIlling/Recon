@@ -1,0 +1,25 @@
+{
+  "stryker-config": {
+    "mutate": [
+      "src/**/*.cs",
+      "!src/**/*.Tests.cs"
+    ],
+    "reporters": [
+      "progress",
+      "html",
+      "json"
+    ],
+    "reportFileName": "mutation-report",
+    "thresholdBreak": 80,
+    "thresholdHigh": 90,
+    "thresholdLow": 70,
+    "concurrency": 4,
+    "testRunner": "xunit",
+    "projectFile": "LocationManagement.Api.Tests.csproj",
+    "solutionFile": "../../LocationManagement.slnx",
+    "excludedMutations": [
+      "string"
+    ],
+    "logLevel": "info"
+  }
+}
