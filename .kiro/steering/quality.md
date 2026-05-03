@@ -15,6 +15,7 @@ A feature is NOT complete until ALL of the following pass with no regressions:
 5. **SAST scan** — zero findings (`semgrep --config=p/owasp-top-ten`)
 6. **SCA scan** — no high/critical vulnerabilities (`dotnet list package --vulnerable` + `npm audit`)
 7. **Secrets scan** — zero detected secrets (`pre-commit run --all-files`)
+8. **Architecture Documentation** — ADRs and/or RFCs written for any significant architectural decisions, library choices, or design patterns introduced
 
 ---
 

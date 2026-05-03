@@ -48,6 +48,7 @@ Before marking a task section as complete, verify:
 - [ ] All new public methods have XML doc comments (`///`)
 - [ ] Complex logic has inline comments explaining the "why"
 - [ ] Any architectural decisions are documented in `docs/adrs/` or `docs/rfcs/`
+- [ ] ADRs/RFCs created for significant design choices, library selections, or patterns introduced
 
 ## Automation
 
