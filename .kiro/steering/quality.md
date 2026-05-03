@@ -11,9 +11,10 @@ A feature is NOT complete until ALL of the following pass with no regressions:
 1. **Unit tests** — `dotnet test`
 2. **Mutation tests** — `dotnet stryker` at ≥ 80% score
 3. **UI automation tests** — Playwright happy path and critical journeys
-4. **SAST scan** — zero findings (`semgrep --config=p/owasp-top-ten`)
-5. **SCA scan** — no high/critical vulnerabilities (`dotnet list package --vulnerable` + `npm audit`)
-6. **Secrets scan** — zero detected secrets (`pre-commit run --all-files`)
+4. **Accessibility** — `@axe-core/playwright` passes with zero critical or serious violations on all affected pages; keyboard navigation and screen reader smoke test completed manually (see `accessibility.md`)
+5. **SAST scan** — zero findings (`semgrep --config=p/owasp-top-ten`)
+6. **SCA scan** — no high/critical vulnerabilities (`dotnet list package --vulnerable` + `npm audit`)
+7. **Secrets scan** — zero detected secrets (`pre-commit run --all-files`)
 
 ---
 
