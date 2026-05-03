@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Task Section Completion Check",
+  "description": "After a spec task completes, verify the full task section completion checklist: all tests pass, code quality checks pass, security scans pass, and no regressions exist.",
+  "version": "1.0.0",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A spec task just completed. Before marking the section complete, verify the Task Section Completion Checklist:\n\n✓ STEP 1: All Sub-tasks Marked Complete\n  - All checkboxes in the section are marked [x]\n  - No optional tasks (*) are blocking completion\n  - Parent task checkbox reflects completion\n\n✓ STEP 2: Backend Tests (if applicable)\n  - Run: dotnet test src/Api.Tests/LocationManagement.Api.Tests.csproj\n  - All tests pass (0 failures)\n  - No regressions in existing tests\n\n✓ STEP 3: Frontend Tests (if applicable)\n  - Run: npm run test -- --run (from src/client/)\n  - All tests pass (0 failures)\n\n✓ STEP 4: Code Quality\n  - Run: dotnet format LocationManagement.slnx --verify-no-changes\n  - Run: dotnet build LocationManagement.slnx\n  - Build succeeds with zero errors\n\n✓ STEP 5: Security Scanning\n  - Run: semgrep --config=p/owasp-top-ten src/\n  - Zero findings required\n  - Run: dotnet list package --vulnerable --include-transitive\n  - No high/critical vulnerabilities\n\n✓ STEP 6: Secrets Scan\n  - Run: dotnet husky run --group pre-commit\n  - Zero detected secrets\n\n✓ STEP 7: Documentation\n  - All new public methods have XML doc comments (///)\n  - Complex logic has inline comments\n  - Architectural decisions documented in docs/adrs/ or docs/rfcs/\n\nReport which checks passed, which were skipped (with reason), and confirm the section is ready to mark complete. Do NOT proceed to the next section until all applicable checks pass."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Pre-Task Test Validation",
+  "description": "Before starting a spec task, run backend tests to ensure the codebase is in a healthy state and no regressions exist from previous work.",
+  "version": "1.0.0",
+  "when": {
+    "type": "preTaskExecution"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "dotnet test src/Api.Tests/LocationManagement.Api.Tests.csproj --logger \"console;verbosity=minimal\" 2>&1 | Select-String -Pattern \"Passed|Failed|Total\"",
+    "timeout": 120
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "Build Validation on Code Write",
+  "description": "After any code file is written or modified, verify the solution still builds to catch compilation errors immediately.",
+  "version": "1.0.0",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": "write"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "dotnet build LocationManagement.slnx --no-restore",
+    "timeout": 60
+  }
+}
