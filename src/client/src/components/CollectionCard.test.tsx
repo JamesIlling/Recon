@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { CollectionCard, CollectionCardData } from './CollectionCard';
 
 describe('CollectionCard', () => {
@@ -79,7 +79,7 @@ describe('CollectionCard', () => {
     render(<CollectionCard collection={mockCollection} onClick={handleClick} />);
 
     const viewButton = screen.getByRole('button', { name: /view collection/i });
-    viewButton.click();
+    fireEvent.click(viewButton);
 
     expect(handleClick).toHaveBeenCalledWith(mockCollection.id);
   });

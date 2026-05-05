@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import React from 'react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '../contexts/AuthContext';
@@ -29,6 +30,16 @@ const mockCollections = {
   totalCount: 2,
 };
 
+const mockUser = {
+  id: 'user-1',
+  username: 'testuser',
+  displayName: 'Test User',
+  email: 'test@example.com',
+  role: 'Standard' as const,
+  avatarImageId: undefined,
+  showPublicCollections: true,
+};
+
 const renderWithProviders = (component: React.ReactElement) => {
   return render(
     <BrowserRouter>
@@ -42,10 +53,21 @@ const renderWithProviders = (component: React.ReactElement) => {
 describe('HomePage', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    localStorage.setItem('auth_token', 'test-token');
+    // First call: profile fetch from AuthProvider
+    (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockUser,
+    });
+    // Subsequent calls: collections fetch
     (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValue({
       ok: true,
       json: async () => mockCollections,
     });
+  });
+
+  afterEach(() => {
+    localStorage.clear();
   });
 
   it('renders page header', async () => {

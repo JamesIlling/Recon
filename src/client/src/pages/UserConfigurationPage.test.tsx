@@ -49,9 +49,11 @@ describe('UserConfigurationPage', () => {
   });
 
   describe('12.4.5: Redirect unauthenticated users to /login', () => {
-    it('should render settings page for authenticated users', () => {
+    it('should render settings page for authenticated users', async () => {
       renderWithProviders(<UserConfigurationPage />);
-      expect(screen.getByText('Settings')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Settings')).toBeInTheDocument();
+      });
     });
   });
 
@@ -136,14 +138,19 @@ describe('UserConfigurationPage', () => {
   });
 
   describe('12.4.2: Avatar uploader with 1:1 crop tool and optional altText input', () => {
-    it('should display avatar upload section', () => {
+    it('should display avatar upload section', async () => {
       renderWithProviders(<UserConfigurationPage />);
-      expect(screen.getByText('Avatar')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Avatar')).toBeInTheDocument();
+      });
       expect(screen.getByLabelText('Select avatar image')).toBeInTheDocument();
     });
 
     it('should reject invalid image formats', async () => {
       renderWithProviders(<UserConfigurationPage />);
+      await waitFor(() => {
+        expect(screen.getByLabelText('Select avatar image')).toBeInTheDocument();
+      });
       const fileInput = screen.getByLabelText('Select avatar image') as HTMLInputElement;
 
       const file = new File(['content'], 'test.txt', { type: 'text/plain' });
@@ -156,6 +163,9 @@ describe('UserConfigurationPage', () => {
 
     it('should reject files larger than 1 MB', async () => {
       renderWithProviders(<UserConfigurationPage />);
+      await waitFor(() => {
+        expect(screen.getByLabelText('Select avatar image')).toBeInTheDocument();
+      });
       const fileInput = screen.getByLabelText('Select avatar image') as HTMLInputElement;
 
       const largeFile = new File(['x'.repeat(1024 * 1024 + 1)], 'large.jpg', {
@@ -170,9 +180,11 @@ describe('UserConfigurationPage', () => {
   });
 
   describe('12.4.3: Change password form (current + new + confirm)', () => {
-    it('should display password change form', () => {
+    it('should display password change form', async () => {
       renderWithProviders(<UserConfigurationPage />);
-      expect(screen.getByText('Change Password')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByRole('heading', { name: 'Change Password' })).toBeInTheDocument();
+      });
       expect(screen.getByLabelText('Current Password')).toBeInTheDocument();
       expect(screen.getByLabelText('New Password')).toBeInTheDocument();
       expect(screen.getByLabelText('Confirm New Password')).toBeInTheDocument();
@@ -180,6 +192,9 @@ describe('UserConfigurationPage', () => {
 
     it('should validate password complexity', async () => {
       renderWithProviders(<UserConfigurationPage />);
+      await waitFor(() => {
+        expect(screen.getByLabelText('New Password')).toBeInTheDocument();
+      });
       const newPasswordInput = screen.getByLabelText('New Password') as HTMLInputElement;
 
       fireEvent.change(newPasswordInput, { target: { value: 'weak' } });
@@ -248,12 +263,21 @@ describe('UserConfigurationPage', () => {
     });
 
     it('should persist preference change immediately to API', async () => {
-      (global.fetch as any).mockResolvedValueOnce({
+      // Mock for PUT /api/users/me/preferences
+      (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         ok: true,
         json: async () => ({}),
       });
+      // Mock for refreshProfile() after toggle
+      (global.fetch as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ ...mockUser, showPublicCollections: false }),
+      });
 
       renderWithProviders(<UserConfigurationPage />);
+      await waitFor(() => {
+        expect(screen.getByLabelText('Show public collections on homepage')).toBeInTheDocument();
+      });
       const checkbox = screen.getByLabelText('Show public collections on homepage') as HTMLInputElement;
 
       fireEvent.click(checkbox);
@@ -273,8 +297,14 @@ describe('UserConfigurationPage', () => {
   });
 
   describe('Accessibility requirements', () => {
-    it('should have proper form labels', () => {
+    it('should have proper form labels', async () => {
       renderWithProviders(<UserConfigurationPage />);
+      // Wait for profile to load, then enter edit mode to expose the display name input
+      await waitFor(() => {
+        expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument();
+      });
+      fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+
       expect(screen.getByLabelText('Display name')).toBeInTheDocument();
       expect(screen.getByLabelText('Select avatar image')).toBeInTheDocument();
       expect(screen.getByLabelText('Current Password')).toBeInTheDocument();
@@ -283,8 +313,11 @@ describe('UserConfigurationPage', () => {
       expect(screen.getByLabelText('Show public collections on homepage')).toBeInTheDocument();
     });
 
-    it('should use semantic HTML', () => {
+    it('should use semantic HTML', async () => {
       const { container } = renderWithProviders(<UserConfigurationPage />);
+      await waitFor(() => {
+        expect(screen.getByText('Settings')).toBeInTheDocument();
+      });
       expect(container.querySelector('form')).toBeInTheDocument();
       expect(container.querySelectorAll('label').length).toBeGreaterThan(0);
     });

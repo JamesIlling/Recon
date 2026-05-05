@@ -275,32 +275,32 @@ Tasks are ordered by dependency. Complete infrastructure and foundation tasks fi
 
 ## 16. Observability and Telemetry
 
-- [~] 16.1 Register `LocationManagementTelemetry` `ActivitySource` and `Meter` in `Program.cs`
-- [~] 16.2 Add custom spans for business operations (create/edit/delete Location, approve/reject PendingEdit)
-- [~] 16.3 Add histograms for Location create/edit durations and image upload count
-- [~] 16.4 Implement source-generated logging (`LoggerMessage.Define`) for all key log events
-- [~] 16.5 Verify all log events never include passwords, JWT secrets, image binary data, or coordinate values
-- [~] 16.6 Integration test: verify AuditEvents are recorded for all mutating operations
+- [ ] 16.1 Register `LocationManagementTelemetry` `ActivitySource` and `Meter` in `Program.cs`
+- [ ] 16.2 Add custom spans for business operations (create/edit/delete Location, approve/reject PendingEdit)
+- [ ] 16.3 Add histograms for Location create/edit durations and image upload count
+- [ ] 16.4 Implement source-generated logging (`LoggerMessage.Define`) for all key log events
+- [ ] 16.5 Verify all log events never include passwords, JWT secrets, image binary data, or coordinate values
+- [ ] 16.6 Integration test: verify AuditEvents are recorded for all mutating operations
 
 ---
 
 ## 17. End-to-End Tests and Accessibility
 
-- [~] 17.1 Playwright E2E: Register then Login then Create Location then View Location
-- [~] 17.2 Playwright E2E: Non-creator submits edit then Creator approves then Canonical version updated
-- [~] 17.3 Playwright E2E: Create Collection then Add Location then View Collection map
-- [~] 17.4 Playwright E2E: Admin promotes user then Promoted user accesses admin features
-- [~] 17.5 Playwright E2E: Admin exports backup then Admin imports backup then Data present
-- [~] 17.6 Axe-core accessibility assertions on every page (zero critical/serious violations)
-- [~] 17.7 Manual accessibility checklist: keyboard-only navigation, screen reader smoke test, 200% zoom, high-contrast mode
+- [ ] 17.1 Playwright E2E: Register then Login then Create Location then View Location
+- [ ] 17.2 Playwright E2E: Non-creator submits edit then Creator approves then Canonical version updated
+- [ ] 17.3 Playwright E2E: Create Collection then Add Location then View Collection map
+- [ ] 17.4 Playwright E2E: Admin promotes user then Promoted user accesses admin features
+- [ ] 17.5 Playwright E2E: Admin exports backup then Admin imports backup then Data present
+- [ ] 17.6 Axe-core accessibility assertions on every page (zero critical/serious violations)
+- [ ] 17.7 Manual accessibility checklist: keyboard-only navigation, screen reader smoke test, 200% zoom, high-contrast mode
 
 ---
 
 ## 18. Security Scanning and Quality Gates
 
-- [~] 18.1 Run `semgrep --config=p/owasp-top-ten src/` — zero findings required
-- [~] 18.2 Run `dotnet list package --vulnerable --include-transitive` — no high/critical vulnerabilities
-- [~] 18.3 Run `npm audit` in `src/client` — no high/critical vulnerabilities
-- [~] 18.4 Run `dotnet stryker` — mutation score 80% or above
-- [~] 18.5 Run `pre-commit run --all-files` — zero detected secrets
-- [~] 18.6 Verify all Husky pre-commit hooks pass: `dotnet husky run --group pre-commit`
+- [ ] 18.1 Run `semgrep --config=p/owasp-top-ten src/` — zero findings required
+- [ ] 18.2 Run `dotnet list package --vulnerable --include-transitive` — no high/critical vulnerabilities
+- [ ] 18.3 Run `npm audit` in `src/client` — no high/critical vulnerabilities
+- [ ] 18.4 Run `dotnet stryker` — mutation score 80% or above
+- [ ] 18.5 Run `pre-commit run --all-files` — zero detected secrets
+- [ ] 18.6 Verify all Husky pre-commit hooks pass: `dotnet husky run --group pre-commit`
